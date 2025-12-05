@@ -1,0 +1,18 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{clc}
+
+\PYG{n}{A} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Carrier} \PYG{n}{Amplitude}
+\PYG{n}{b} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{]}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Maximum} \PYG{n}{Phase} \PYG{n}{Deviation}
+\PYG{n}{n} \PYG{o}{=} \PYG{l+m+mi}{40}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Number} \PYG{n}{of} \PYG{n}{Harmonics}
+\PYG{n}{th} \PYG{o}{=} \PYG{l+m+mf}{1E\PYGZhy{}3} \PYG{o}{\PYGZpc{}} \PYG{n}{Threshold} \PYG{k}{for} \PYG{n}{neglect}
+
+\PYG{n}{t} \PYG{o}{=} \PYG{n}{zeros}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{n} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{length}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Output} \PYG{n}{Array}
+\PYG{n}{t}\PYG{p}{(}\PYG{p}{:}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{n}\PYG{p}{:}\PYG{n}{n}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Add} \PYG{n}{harmonic} \PYG{n}{index} \PYG{n}{to} \PYG{n}{t}
+
+\PYG{k}{for} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{length}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}
+    \PYG{n}{h} \PYG{o}{=} \PYG{n}{zeros}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Array} \PYG{k}{for} \PYG{n}{harmonics}
+    \PYG{k}{for} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{n} \PYG{o}{\PYGZpc{}} \PYG{n}{For} \PYG{n}{each} \PYG{n}{harmonic}\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}
+        \PYG{n}{x} \PYG{o}{=} \PYG{n}{A} \PYG{o}{*} \PYG{n}{besselj}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,} \PYG{n}{b}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}\PYG{p}{)} \PYG{o}{*} \PYG{l+m+mf}{0.5}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Storage} \PYG{n}{Variable}
+        \PYG{k}{if} \PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{n}{th}
+            \PYG{n}{h}\PYG{p}{(}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{=} \PYG{n}{x}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Store} \PYG{n}{the} \PYG{n}{harmonic} \PYG{n}{value}
+\end{MintedVerbatim}

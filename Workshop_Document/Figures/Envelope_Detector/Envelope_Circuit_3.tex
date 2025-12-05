@@ -1,0 +1,45 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+
+\begin{circuitikz}[american,littleR/.style={R, resistors/scale=0.5}]
+
+\ctikzset{capacitors/scale=0.5}
+\ctikzset{
+  sources/scale=0.85,              % a touch bigger so +/– aren’t cramped
+  sources/symbol/thickness=0.8,    % optional: slimmer internal marks
+  sources/symbol/sign rotation=straight % optional: always-horizontal +/–
+}
+
+% Inputs
+\draw (0,2.5) node[left]{$m(t)$} to[R,l=$Ri$, o-] (2,2.5) -- (2,2) coordinate (p0);
+\draw (0,1.5) node[left]{$c(t)$} to[R,l=$Ri$, o-] (2,1.5) -- (p0);
+
+% Op-amp
+\draw (p0) to[short] (3,2) node[op amp, anchor=-](opamp){};
+\draw (opamp.+) to [short] ++(-0.5, 0) to [short] ++ (0, -1.5) node(p1)[ground]{};
+
+% Feedback
+\draw (opamp.out) to ++ (0.25, 0) coordinate (p3) to ++(0, 1.75) to [R, l_=$Ri$] ++ (-2.9, 0) coordinate(p2) to (p2|-opamp.-);
+
+% Envelope Detector
+\draw (p3) to [diode, l={1N34}] ++ (2, 0) coordinate (p4);
+\draw (p4) to [C, label={$C_1$}] ++ (0, -2) to [short] (p4 |- p1) node(p5)[ground]{};
+\draw (p4) to [short] ++ (1.5, 0) to [R, l=$R_1$] ++ (0, -2) to [short] ++ (-1.5, 0);
+\draw (p4) ++ (1.5, 0) to [C, l=$C_2$] ++ (2, 0) coordinate (y3) 
+						to [R, l=$R_2$] ++ (0, -2) to [short] ++ (-2, 0);
+\draw (y3) to [R, l=$R_3$] ++ (2.5, 0) coordinate (y4) 
+						to [C, l=$C_3$] ++ (0, -2) to [short] ++ (-2.5, 0);
+
+% Text
+\node[below right] at (p0){$y_0(t)$};
+\node[below] at (p3){$y_1(t)$};
+\node[above] at (p4){$y_2(t)$};
+\node[above] at (y3){$y_3(t)$};
+\node[above] at (y4){$y_4(t)$};
+
+
+\end{circuitikz}
+
+\end{document}

@@ -1,0 +1,20 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+
+\begin{circuitikz}[american,littleR/.style={R, resistors/scale=0.5}] %Usually used - left incase :)
+\def\boxlength{3};
+
+\ctikzset{sources/scale=1.0}
+\draw (0, 0) to [V, invert, l=${V_i(s)}$] (0, \boxlength)
+			to [R, l=${R}$] (\boxlength, \boxlength)
+			to [C, l_=${\dfrac{1}{sC}}$, v^=${V_o(s)}$] (\boxlength, 0)
+			to [short] (0, 0);
+			
+\draw (0, 0) node[sground]{};
+
+
+\end{circuitikz}
+
+\end{document}

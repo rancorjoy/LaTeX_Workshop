@@ -1,0 +1,38 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    axis x line=middle,
+  	axis y line=middle,
+    xlabel={$t$},
+    ylabel={$v_i(t)$},
+    domain=-4:4,
+    samples=200,
+    width=0.9\linewidth,
+    height=0.75\linewidth,
+    ymin=-0.75, ymax=0.75,
+    xtick={},
+    xticklabels=\empty,
+    ytick={},
+    yticklabels=\empty
+]
+
+% Plotting the square wave using the sign and sin functions
+\addplot[black] {0.5*sign(sin(90*x))};
+
+% Adding double arrow next to the middle pulse - top
+\draw[->, >=latex] (axis cs:2.25, 0) -- (axis cs:2.25,0.5);
+\draw[<-, >=latex] (axis cs:2.25, 0) -- (axis cs:2.25,0.5);
+\node (h) at (axis cs:2.5, 0.25) {$\frac{1}{2}$};
+
+% Adding double arrow next to the middle pulse - bottom
+\draw[->, >=latex] (axis cs:2.25, 0) -- (axis cs:2.25,-0.5);
+\draw[<-, >=latex] (axis cs:2.25, 0) -- (axis cs:2.25,-0.5);
+\node (h) at (axis cs:2.5, -0.25) {$\frac{1}{2}$};
+
+\end{axis}
+
+\end{tikzpicture}
+\end{document}

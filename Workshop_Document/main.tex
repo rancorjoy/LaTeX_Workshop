@@ -1,0 +1,136 @@
+\PassOptionsToPackage{dvipsnames,table}{xcolor}%Prevents color setting conflict
+\documentclass[12pt, letterpaper, fleqn]{report}%Type of document and font size
+
+%----------ADDED PACKAGES ----------
+
+%Layout Packages
+\usepackage[margin=1 in,includefoot]{geometry}%Marigin spacing
+\usepackage{pdflscape} %Allows \begin{landscape} \end{landscape} commands
+
+%Content Formatting Packages
+\usepackage{titlesec}%Titles and Sections (and table of contents)
+\usepackage{enumitem} %Allows options for enumerate blocks
+\usepackage[bottom]{footmisc} %forces footnotes to bottom
+\usepackage{multicol} % Allows multiple columns without a table
+\usepackage[none]{hyphenat} %Disable word breaks
+
+%Figure Formatting Packages
+\usepackage{float} %For [H] in figure declaration
+\usepackage{wrapfig} %Automated figure wrapping :)
+
+%Image Packages
+\usepackage{graphicx}%Allows images to be imported
+
+%Table Packages
+\usepackage{changepage,threeparttable} % For wide tables
+\usepackage{booktabs, multirow} %(Dependency)
+\usepackage{adjustbox}%Allows table to be resized but not text
+
+%Figure Packages (Tikz)
+\usepackage{tikz} %Plots and Diagrams
+\usetikzlibrary{patterns}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows.meta,decorations.markings}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{positioning}
+\usepackage{circuitikz} %Circuit Schematics
+
+% Figure Packages (PGFPlots)
+\usepackage{pgfplots} %Graphs and Plots
+\pgfplotsset{compat=1.18} % Sets PGF Plots to version 1.18
+
+% Math Formatting Packages
+\usepackage{mathtools} %allows for line spacing edits
+\usepackage{siunitx} %1E-1 --> 1\cdot10^{-1}
+\usepackage{soul}% for underlines
+\usepackage{amssymb} %Adds some greek letters and shapes
+\usepackage{amsfonts} %Differemt typefaces such as \mathcal{} or \mathbb (caligraphy and double lined respectively)
+\usepackage{siunitx} %SI Units in Circuitikz Graphics
+\usepackage{bm} %For vector notation
+\usepackage[]{amsmath} %Adds more math symbols
+\usepackage{microtype} %For /Sha command
+
+% Code Blocks Packages
+\usepackage{listings} %code blocks that break across pages for minted
+\usepackage{tcolorbox}
+\tcbuselibrary{minted} % Required for minted integration with tcolorbox
+\usepackage{minted}
+%\usepackage{fontspec} %for unicode compattible fonts %For LuaTex implementation
+%\setmonofont{DejaVu Sans Mono} %code block font for LauTex that has more characters
+
+%Colors
+\usepackage[dvipsnames]{xcolor} %Color Library
+\usepackage[table]{xcolor} %Allows Table cells to be colored
+
+%References
+\usepackage[autocite=footnote, style=verbose]{biblatex} %Imports 
+\addbibresource{../Common Resources/References.bib} %Import the bibliography file
+
+%Commands file inclusion
+\input{../Common Resources/commands}
+
+%Table of Contents (TOC) Settings
+\setcounter{secnumdepth}{5} %Shows section numbering down to subsubsections
+\setcounter{tocdepth}{5}
+
+%----------DOCUMENT INFORMATION----------
+\title{Document Title}
+\author{
+	Last, First\\
+	\texttt{email@cpp.edu}
+	}
+\date {
+	Friday, December 5th, 2025
+	}
+
+%----------DOCUMENT BODY----------
+
+%Allows for sub-document functionality
+\usepackage{subfiles} % Best loaded last in the preamble
+
+%Begin document content
+\begin{document}
+
+
+
+%Title Page
+\begin{center}
+
+$ $ %Empty Equation -- Allows \vspace to work for "first" element on page
+
+\vspace{2\baselineskip}
+\includegraphics[scale=0.45]{../Common Resources/CPP_Logo}\\%Cal Poly Logo
+\vfill
+
+\large%Title Text and class information
+\textbf{California Polytechnic State University Pomona}\\
+\normalsize
+DEPARTMENT OF ELECTRICAL AND COMPUTER ENGINEERING\\[2\baselineskip]
+[Insert Class Name Here]\\%Class name
+Professor [Insert Instructor Name Here]\\%Instrctor name
+Section [Insert Class Section Here]\\%Class number
+
+\end{center}
+{\let\newpage\relax\maketitle}%Inserts document information
+
+
+%Contents
+\small\tableofcontents%Table of contents
+\thispagestyle{empty}%No page number on contents page
+\normalsize
+
+% Chapter and Page number configuration
+\setcounter{page}{0}
+\setcounter{chapter}{10}%Change this to the report number for said class
+
+\SetCodeLang{Matlab} %Render code as MATLAB (syntax highlighting)
+
+\subfile{format} %Loads the format file - which references all chapters
+% DO NOT PUT LAB REPORT IN TOP FILE - FORMAT THE REPORT IN THE FORMAT FILE!!!
+
+% Use this to import subfile that is attached to different main to use proper subfix!
+%{\let\subfix\relax
+%\subfile{RELATIVE PATH}
+%}
+
+\end{document}

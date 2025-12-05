@@ -1,0 +1,31 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+
+\begin{circuitikz}[american,littleR/.style={R, resistors/scale=0.5}]
+
+\ctikzset{capacitors/scale=0.5}
+\ctikzset{
+  sources/scale=0.85,              % a touch bigger so +/– aren’t cramped
+  sources/symbol/thickness=0.8,    % optional: slimmer internal marks
+  sources/symbol/sign rotation=straight % optional: always-horizontal +/–
+}
+
+% Positions (from op-amp circuit)
+\draw (0, -2) coordinate (p1); % Ground Height
+\draw (0, 0) coordinate (p3);  % Input
+
+% Envelope Detector
+\draw (p3) to [short, -o] (-0.1, 0) node(vin)[left]{$y_1(t)$};
+\draw (p3) to [diode, l={1N5817}] ++ (4, 0) coordinate (p4);
+\draw (p4) to [C, label={$C_1$}] ++ (0, -2) to [short] (p4 |- p1) node(p5)[ground]{};
+\draw (p4) to [short] ++ (1.5, 0) coordinate (p6) to [R, l=$R_1$] ++ (0, -2) to [short] ++ (-1.5, 0);
+
+% Text
+\node[above] at (p6){$y_2(t)$};
+
+
+\end{circuitikz}
+
+\end{document}

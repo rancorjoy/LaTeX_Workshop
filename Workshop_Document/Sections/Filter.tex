@@ -1,0 +1,67 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+\setbool{@fleqn}{false} %THIS DETERMINES IF EQUATIONS ARE CENTERED!
+%\chapter{Current Chapter Name} %If this is the first section in the document, it needs a chapter header, activate this to see how the spacing will be effected, but make sure to disable it before rendering format.tex
+
+\section{Low-Pass Filter Response Harmonic Reconstruction}
+
+%----------FIGURE EXAMPLES----------
+
+%Use this code for a figure displaying an image in the Images folder
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=0.5]{../Images/NAME}
+%\caption{FIGURE CAPTION}
+%\label{FIGURE NAME (not visible)}
+%\end{figure}
+
+%Use this code for a figure displaying a figure in the Figures folder
+
+%\begin{figure}[H]
+%\centering
+%\scalebox{1.0}{\subfile{../Figures/NAME}}
+%\caption{FIGURE CAPTION}
+%\label{FIGURE NAME (not visible)}
+%\end{figure}
+
+%----------START OF SECTION----------
+
+\noindent Below a simple RC-Low-Pass Filter circuit is shown, along with it's input $v_i(t)$. The math needed to exactly construct its output is dealt with in the figure file(s).
+
+\begin{figure}[H]
+\centering
+\scalebox{0.5}{\subfile{../Figures/Harmonic_Reconstruction/Square_Wave_vi}}
+\caption{Input Signal $v_i(t)$}
+\label{Input_Signal-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\scalebox{1.0}{\subfile{../Figures/Harmonic_Reconstruction/Circuit_t}}
+\caption{Time Domain Low-Pass Filter Circuit}
+\label{Circuit_t-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\scalebox{1.0}{\subfile{../Figures/Harmonic_Reconstruction/Circuit_s}}
+\caption{Laplace Domain Low-Pass Filter Circuit}
+\label{Circuit_s-Workshop}
+\end{figure}
+
+\noindent The reconstruction plot takes a while to render, it has been commented out! Feel free to add it back in, and change the parameters. It will appear below :)
+
+\input{../Figures/Harmonic_Reconstruction/Recon_Command} %This loads in the command
+%The parameters for this command are {xbounds}{harmonics/2}{cuttoff/fundamental frequency}
+%\begin{figure}[H]
+%\centering
+%\scalebox{0.5}{\LPFrecon{1.5}{10}{10}}
+%\caption{FIGURE CAPTION}
+%\label{Reconstructed Input and Output Signal}
+%\end{figure}
+
+
+\end{document}

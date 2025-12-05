@@ -1,0 +1,25 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    xmin=-3, xmax=3,           		% x-axis limits
+    ymin=0, ymax=1.5,                 % y-axis limits
+    axis x line=bottom,         		% x-axis at bottom
+    axis y line=left,         		% y-axis at left edge
+    axis line style = {-{Latex}}, 	% use Latex arrows for axes
+    xlabel = \(x\),
+    ylabel = {\(f(x)=e^{-x^2}\)}
+]
+%Below the gaussian function is defined
+\addplot [
+    domain=\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}, 
+    samples=100, 
+    color=black,
+    -{Latex} %Adds arrow to function
+]
+{exp(-x^2)};
+\end{axis}
+\end{tikzpicture}
+\end{document}

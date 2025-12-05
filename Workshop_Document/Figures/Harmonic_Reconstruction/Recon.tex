@@ -1,0 +1,83 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+
+% Plot parameters
+\pgfmathsetmacro\xbound{1.5}   % x-axis limits
+\pgfmathsetmacro\n{4}     	  % number of harmonics in the reconstruction
+\pgfmathsetmacro\wc{10/(2*pi)} % cutoff in harmonic units k_c = wc/w0 (multiple of fundamental frequency)
+
+% Define vi(t) coefficient for harmonic n
+\pgfmathdeclarefunction{vinmag}{1}{%
+  \pgfmathparse{1/(pi*abs(#1))}%
+}
+
+% Define vi(t) phase for harmonic n
+\pgfmathdeclarefunction{posneg}{1}{%
+  \pgfmathparse{#1 < 0 ? pi/2 : -pi/2}%
+}
+\pgfmathdeclarefunction{vinphase}{1}{%
+  \pgfmathparse{mod(#1,2) == 0 ? 0 : posneg(#1)}%
+}
+
+% Period and base radian frequency
+\pgfmathsetmacro\T{1}
+\pgfmathsetmacro\wzero{2*pi/\T} % w0
+
+% Define low pass filter magnitude for harmonic n
+\pgfmathdeclarefunction{hmag}{1}{%
+  \pgfmathparse{\wc/sqrt((#1)^2 + (\wc)^2)}%
+}
+
+% Define low pass filter phase for harmonic n
+\pgfmathdeclarefunction{hphase}{1}{%
+  \pgfmathparse{-rad(atan(#1/\wc))}%
+}
+
+% Define reconstruction of input signal
+\def\vinrecon{0}
+\foreach \m in {1,...,\n} {%
+  \pgfmathparse{mod(\m,2)==1 ? (vinmag(\m)) : 0} \let\A\pgfmathresult
+  \xdef\vinrecon{\vinrecon
+    + (\A)*cos(deg(\m*\wzero*x - pi/2))
+    + (\A)*cos(deg(-\m*\wzero*x + pi/2))}%
+}
+
+% Define reconstruction of output signal
+\def\voutrecon{0}
+\foreach \m in {1,...,\n} {%
+  \pgfmathparse{mod(\m,2)==1 ? (vinmag(\m)) : 0} \let\A\pgfmathresult
+  \xdef\voutrecon{\voutrecon
+    + (\A*hmag(\m))*cos(deg(\m*\wzero*x - pi/2 + hphase(\m)))
+    + (\A*hmag(\m))*cos(deg(-\m*\wzero*x + pi/2 - hphase(\m)))}%
+}
+
+
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.95\linewidth,
+  height=0.6\linewidth,
+  samples=800,  
+  xmin=-\xbound, xmax=\xbound,
+  ymin=-1.1, ymax=1.1,
+  axis x line=middle,
+  axis y line=middle,
+  xtick=\empty,
+  xticklabels={},
+  ytick={},
+  yticklabels={},
+  xlabel=$t$,
+  ylabel=$v(t)$,
+]
+
+% Plot the partial sum f_n(x)
+  \addplot[thick, domain=-\xbound:\xbound, gray] {\vinrecon};
+  \addlegendentry{$v_i(t)$}
+  \addplot[thick, domain=-\xbound:\xbound, black] {\voutrecon};
+  \addlegendentry{$v_o(t)$}
+
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

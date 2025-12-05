@@ -1,0 +1,35 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    xmin=-2, xmax=2,           		% x-axis limits
+    ymin=0, ymax=5,                  % y-axis limits
+    axis x line=bottom,         		% x-axis at bottom
+    axis y line=center,         		% y-axis at left edge
+    axis line style = {-{Latex}}, 	% use Latex arrows for axes
+    xlabel = \(x\),
+    ylabel = {\(f(x)\)},
+    ytick={2, 3, 4, 5} , 			% prevent label intersecting plot
+    extra y ticks={1},            	% add extra tick at 1
+    extra y tick labels={}           % hide the label
+]
+%Below the example quadratic is defined twice for two arrows
+\addplot [
+    domain=\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}, 
+    samples=100, 
+    color=black,
+    -{Latex}
+]
+{x^2+1};
+\addplot [
+    domain=\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}, 
+    samples=100, 
+    color=black,
+    {Latex}-
+]
+{x^2+1};
+\end{axis}
+\end{tikzpicture}
+\end{document}

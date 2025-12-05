@@ -1,0 +1,156 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    xmin=-1.3, xmax=1.3,
+    ymin=-1.3, ymax=1.3,
+    axis x line=middle,
+    axis y line=middle,
+    axis line style = {-{Latex}},
+    xlabel=$x$,
+    ylabel=$y$,    
+    xtick={\empty},
+    xticklabels={}, 
+    ytick={\empty},     % Y-ticks
+    yticklabels={}  
+	axis equal,
+	scale only axis,
+	width=0.8\linewidth,
+	height=0.8\linewidth,
+]
+%Plot of a unit circle
+\addplot [
+    domain=\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}, 
+    samples=100, 
+    color=black
+]
+(0,0) circle[radius=1];
+
+%Y-Comb is defined
+\addplot+ [
+        ycomb,
+        gray!50,                				% line color
+    		mark=*,								% mark color
+    		mark options={fill=gray,draw=black} 	% marker style
+    ] coordinates {
+    		({1/2},{sqrt(3)/2})
+        ({sqrt(3)/2},{1/2})
+        ({sqrt(2)/2},{sqrt(2)/2})
+        ({1/2},{-sqrt(3)/2})
+        ({sqrt(3)/2},{-1/2})
+        ({sqrt(2)/2},{-sqrt(2)/2})
+        
+        ({-1/2},{sqrt(3)/2})
+        ({-sqrt(3)/2},{1/2})
+        ({-sqrt(2)/2},{sqrt(2)/2})
+        ({-1/2},{-sqrt(3)/2})
+        ({-sqrt(3)/2},{-1/2})
+        ({-sqrt(2)/2},{-sqrt(2)/2})
+        
+        (1,0)
+        (0,1)
+        (-1,0)
+        (0,-1)
+        
+    };
+
+%X-Comb is defined
+\addplot+ [
+        xcomb,
+        gray!50,                				% line color
+    		mark=*,								% mark color
+    		mark options={fill=gray,draw=black} 	% marker style
+    ] coordinates {
+        ({1/2},{sqrt(3)/2})
+        ({sqrt(3)/2},{1/2})
+        ({sqrt(2)/2},{sqrt(2)/2})
+        ({1/2},{-sqrt(3)/2})
+        ({sqrt(3)/2},{-1/2})
+        ({sqrt(2)/2},{-sqrt(2)/2})
+        
+        ({-1/2},{sqrt(3)/2})
+        ({-sqrt(3)/2},{1/2})
+        ({-sqrt(2)/2},{sqrt(2)/2})
+        ({-1/2},{-sqrt(3)/2})
+        ({-sqrt(3)/2},{-1/2})
+        ({-sqrt(2)/2},{-sqrt(2)/2})
+        
+        (1,0)
+        (0,1)
+        (-1,0)
+        (0,-1)
+        
+    };
+    
+%Arrows for angle Quadrant 1
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:1,0)
+        node[pos=0.50, fill=white, inner sep=1pt] {$0^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$0$};
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:{sqrt(3)/2},{1/2})
+        node[pos=0.50, fill=white, inner sep=1pt] {$30^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\frac{\pi}{6}$}
+        node[pos=1.25, fill=white, inner sep=1pt] {$\left(\frac{\sqrt{3}}{2},\frac{1}{2}\right)$};
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:{sqrt(2)/2},{sqrt(2)/2})
+        node[pos=0.50, fill=white, inner sep=1pt] {$45^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\frac{\pi}{4}$}
+        node[pos=1.25, fill=white, inner sep=1pt] {$\left(\frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2}\right)$};
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:{1/2},{sqrt(3)/2})
+        node[pos=0.50, fill=white, inner sep=1pt] {$60^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\frac{\pi}{3}$}
+        node[pos=1.25, fill=white, inner sep=1pt] {$\left(\frac{1}{2},\frac{\sqrt{3}}{2}\right)$};
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:0, 1)
+        node[pos=0.50, fill=white, inner sep=1pt] {$90^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\frac{\pi}{2}$};
+        
+%Arrows for angle Quadrant 2
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:{-sqrt(3)/2},{1/2})
+        node[pos=0.50, fill=white, inner sep=1pt] {$150^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\frac{5\pi}{6}$}
+        node[pos=1.25, fill=white, inner sep=1pt] {$\left(-\frac{\sqrt{3}}{2},\frac{1}{2}\right)$};
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:{-sqrt(2)/2},{sqrt(2)/2})
+        node[pos=0.50, fill=white, inner sep=1pt] {$135^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\frac{3\pi}{4}$}
+        node[pos=1.25, fill=white, inner sep=1pt] {$\left(-\frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2}\right)$};
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:{-1/2},{sqrt(3)/2})
+        node[pos=0.50, fill=white, inner sep=1pt] {$120^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\frac{2\pi}{3}$}
+        node[pos=1.25, fill=white, inner sep=1pt] {$\left(-\frac{1}{2},\frac{\sqrt{3}}{2}\right)$};
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:-1, 0)
+        node[pos=0.50, fill=white, inner sep=1pt] {$180^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\pi$};
+        
+%Arrows for angle Quadrant 3
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:{-sqrt(3)/2},{-1/2})
+        node[pos=0.50, fill=white, inner sep=1pt] {$210^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\frac{7\pi}{6}$}
+        node[pos=1.25, fill=white, inner sep=1pt] {$\left(-\frac{\sqrt{3}}{2},-\frac{1}{2}\right)$};
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:{-sqrt(2)/2},{-sqrt(2)/2})
+        node[pos=0.50, fill=white, inner sep=1pt] {$225^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\frac{5\pi}{4}$}
+        node[pos=1.25, fill=white, inner sep=1pt] {$\left(-\frac{\sqrt{2}}{2},-\frac{\sqrt{2}}{2}\right)$};
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:{-1/2},{-sqrt(3)/2})
+        node[pos=0.50, fill=white, inner sep=1pt] {$240^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\frac{4\pi}{3}$}
+        node[pos=1.25, fill=white, inner sep=1pt] {$\left(-\frac{1}{2},-\frac{\sqrt{3}}{2}\right)$};
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:0, -1)
+        node[pos=0.50, fill=white, inner sep=1pt] {$270^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\frac{3\pi}{2}$};
+        
+%Arrows for angle Quadrant 4
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:{sqrt(3)/2},{-1/2})
+        node[pos=0.50, fill=white, inner sep=1pt] {$330^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\frac{11\pi}{6}$}
+        node[pos=1.25, fill=white, inner sep=1pt] {$\left(\frac{\sqrt{3}}{2},-\frac{1}{2}\right)$};
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:{sqrt(2)/2},{-sqrt(2)/2})
+        node[pos=0.50, fill=white, inner sep=1pt] {$315^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\frac{7\pi}{4}$}
+        node[pos=1.25, fill=white, inner sep=1pt] {$\left(\frac{\sqrt{2}}{2},-\frac{\sqrt{2}}{2}\right)$};
+\draw[-{Latex}] (axis cs:0,0) -- (axis cs:{1/2},{-sqrt(3)/2})
+        node[pos=0.50, fill=white, inner sep=1pt] {$300^\circ$}
+        node[pos=0.75, fill=white, inner sep=1pt] {$\frac{5\pi}{3}$}
+        node[pos=1.25, fill=white, inner sep=1pt] {$\left(\frac{1}{2},-\frac{\sqrt{3}}{2}\right)$};
+\end{axis}
+\end{tikzpicture}
+\end{document}

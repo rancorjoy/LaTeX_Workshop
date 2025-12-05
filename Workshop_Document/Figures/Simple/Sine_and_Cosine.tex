@@ -1,0 +1,42 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    xmin=0, xmax=2.75*pi,            % x-axis limits
+    ymin=-1.25, ymax=2,           	% y-axis limits
+    axis x line=middle,         		% x-axis at center
+    xticklabel pos=lower, 			% put tick labels only below (bottom axis)
+    axis y line=left,         		% y-axis at left edge
+    axis line style = {-{Latex}}, 	% use Latex arrows for axes
+    xlabel = \(x\),
+    ylabel = {\(f(x)\)},
+    legend pos=north west,
+    xtick={0,1.57,3.14,4.71,6.28, 7.85},
+    xticklabels={$0$, $\frac{\pi}{2}$,$\pi$,$\frac{3\pi}{2}$,$2\pi$,$\frac{5\pi}{2}$},
+    width=0.8*\linewidth,
+    height=8cm %scale of graph window
+]
+%Below the sine function is defined
+\addplot [
+    domain=\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}, 
+    samples=100, 
+    color=black,
+    -{Latex} %Adds arrow to function
+]
+{sin(deg(x))};
+\addlegendentry{\(\text{sin}(x)\)}
+%Below the cosine function is defined
+\addplot [
+    domain=\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}, 
+    samples=100, 
+    color=black,
+    -{Latex}, %Adds arrow to function
+    dashed
+]
+{cos(deg(x))};
+\addlegendentry{\(\text{cos}(x)\)}
+\end{axis}
+\end{tikzpicture}
+\end{document}

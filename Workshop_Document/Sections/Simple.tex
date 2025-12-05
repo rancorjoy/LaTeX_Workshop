@@ -1,0 +1,126 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+\setbool{@fleqn}{false} %THIS DETERMINES IF EQUATIONS ARE CENTERED!
+%\chapter{Current Chapter Name} %If this is the first section in the document, it needs a chapter header, activate this to see how the spacing will be effected, but make sure to disable it before rendering format.tex
+
+\section{Simple TikZ and PGFplots Examples}
+
+%----------FIGURE EXAMPLES----------
+
+%Use this code for a figure displaying an image in the Images folder
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=0.5]{../Images/NAME}
+%\caption{FIGURE CAPTION}
+%\label{FIGURE NAME (not visible)}
+%\end{figure}
+
+%Use this code for a figure displaying a figure in the Figures folder
+
+%\begin{figure}[H]
+%\centering
+%\scalebox{1.0}{\subfile{../Figures/NAME}}
+%\caption{FIGURE CAPTION}
+%\label{FIGURE NAME (not visible)}
+%\end{figure}
+
+%----------START OF SECTION----------
+
+\noindent This section demonstrates some simple TikZ and PGFplots examples, feel free to reference this code during the challenges at the end of this workshop :)
+
+\begin{figure}[H]
+\center{
+\scalebox{0.8}
+{\subfile{../Figures/Simple/Quadratic_Example}
+}}
+\caption{Plot of $f(x)=x^2+1$}
+\label{Quadratic_Plot-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\center{
+\scalebox{0.8}
+{\subfile{../Figures/Simple/Sine_and_Cosine}
+}}
+\caption{Sine and Cosine Functions}
+\label{Sine_Cosine_Plot-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\center{
+\scalebox{0.8}
+{\subfile{../Figures/Simple/Sine_Values}
+}}
+\caption{Sine Common Values}
+\label{Sine_Plot-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\center{
+\scalebox{0.8}
+{\subfile{../Figures/Simple/Cosine_Values}
+}}
+\caption{Cosine Common Values}
+\label{Cosine_Plot-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\center{
+\scalebox{0.8}
+{\subfile{../Figures/Simple/Unit_Circle}
+}}
+\caption{The Unit Circle}
+\label{Unit_Circle-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\center{
+\scalebox{0.7}
+{\subfile{../Figures/Simple/Complex_Unit_Circle}
+}}
+\caption{The Complex Unit Circle}
+\label{Complex_Unit_Circle-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\center{
+\scalebox{0.85}
+{\subfile{../Figures/Simple/Exponential_Growth_Plot}
+}}
+\caption{Exponential Growth}
+\label{Exponential_Growth_Plot-Workshop}
+\end{figure}
+
+
+\begin{figure}[H]
+\center{
+\scalebox{0.85}
+{\subfile{../Figures/Simple/Exponential_Decay_Plot}
+}}
+\caption{Exponential Decay}
+\label{Exponential_Decay_Plot-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\center{
+\scalebox{0.85}
+{\subfile{../Figures/Simple/Pure_Gaussian}
+}}
+\caption{Pure Gaussian Function}
+\label{Pure_Gaussian_Plot-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\center{
+\scalebox{0.85}
+{\subfile{../Figures/Simple/Normalized_Gaussian}
+}}
+\caption{Normalized Gaussian Function}
+\label{Normalized Gaussian_Plot-Workshop}
+\end{figure}
+
+
+\end{document}

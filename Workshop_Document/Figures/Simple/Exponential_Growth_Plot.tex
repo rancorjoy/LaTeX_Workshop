@@ -1,0 +1,25 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    xmin=-1, xmax=4,           		% x-axis limits
+    ymin=0,                     		% optional y-min limit
+    axis x line=bottom,         		% x-axis at bottom
+    axis y line=middle,         		% y-axis at x=0
+    axis line style = {-{Latex}}, 	% use Latex arrows for axes
+    xlabel = \(x\),
+    ylabel = {\(f(x)=e^x\)}
+]
+%Below the exponential growth function is defined
+\addplot [
+    domain=-1:4, 
+    samples=100, 
+    color=black,
+    -{Latex} %Adds arrow to function
+]
+{exp(x)};
+\end{axis}
+\end{tikzpicture}
+\end{document}

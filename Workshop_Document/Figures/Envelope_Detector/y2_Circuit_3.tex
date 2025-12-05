@@ -1,0 +1,44 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.95\linewidth,
+  height=0.95\linewidth,
+  %samples=800,  
+  xmin=0.0995, xmax=0.1,
+  ymin=-1.75, ymax=1.75,
+  axis x line=middle,
+  axis y line=middle,
+  xtick=\empty,
+  xticklabels={},
+  xlabel=$t$,
+  ylabel=$v(t)$,
+]
+
+\addplot+[gray, mark=none]
+table[
+  col sep=comma,
+  trim cells=true,
+  header=true,
+  x=Time,
+  y={V(y1)}           
+]{\subfix{../../Data/Circuit_3_PSpice_Data.csv}};  % give the real relative path + extension
+\addlegendentry{$y_1(t)$}
+
+\addplot+[black, mark=none]
+table[
+  col sep=comma,
+  trim cells=true,
+  header=true,
+  x=Time,
+  y={V(y2)}           
+]{\subfix{../../Data/Circuit_3_PSpice_Data.csv}};  % give the real relative path + extension
+\addlegendentry{$y_2(t)$}
+
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

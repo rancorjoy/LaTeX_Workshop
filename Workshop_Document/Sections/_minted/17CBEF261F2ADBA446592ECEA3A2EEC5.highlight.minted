@@ -1,0 +1,14 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{else}
+            \PYG{n}{h}\PYG{p}{(}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Store} \PYG{l+m+mi}{0} \PYG{n}{instead}
+        \PYG{n}{end}
+    \PYG{n}{end}
+    \PYG{n}{k} \PYG{o}{=} \PYG{n}{h}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Define} \PYG{n}{k} \PYG{k}{for} \PYG{n}{negative} \PYG{n}{harmonics}
+    \PYG{n}{k}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{=} \PYG{p}{[}\PYG{p}{]}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Remove} \PYG{l+m+mi}{0}\PYG{n}{th} \PYG{n}{harmonic} \PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{k}
+    \PYG{n}{k} \PYG{o}{=} \PYG{n}{flip}\PYG{p}{(}\PYG{n}{k}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Flip} \PYG{n}{k} \PYG{p}{(}\PYG{n}{correct} \PYG{n}{order}\PYG{p}{)}
+    \PYG{n}{t}\PYG{p}{(}\PYG{p}{:}\PYG{p}{,} \PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{=} \PYG{p}{[}\PYG{n}{k} \PYG{n}{h}\PYG{p}{]}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{; }\PYG{l+s+s1}{\PYGZpc{}}\PYG{l+s+s1}{ Add data to table}
+\PYG{n}{end}
+
+\PYG{n}{t} \PYG{o}{=} \PYG{n}{array2table}\PYG{p}{(}\PYG{n}{t}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{writetable}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Bessel\PYGZus{}Data.txt}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Delimiter}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{,}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\end{MintedVerbatim}

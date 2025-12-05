@@ -1,0 +1,54 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.95\linewidth,
+  height=0.95\linewidth,
+  %samples=800,  
+  xmin=0.0995, xmax=0.1,
+  ymin=-0.3, ymax=0.8,
+  axis x line=middle,
+  axis y line=middle,
+  xtick=\empty,
+  xticklabels={},
+  xlabel=$t$,
+  ylabel=$v(t)$,
+]
+
+\addplot+[gray!50, mark=none]
+table[
+  col sep=comma,
+  trim cells=true,
+  header=true,
+  x=Time,
+  y={V(y3)}           
+]{\subfix{../../Data/Circuit_3_PSpice_Data.csv}};  % give the real relative path + extension
+\addlegendentry{$y_3(t)$}
+
+\addplot+[black, mark=none]
+table[
+  col sep=comma,
+  trim cells=true,
+  header=true,
+  x=Time,
+  y={V(y4)}           
+]{\subfix{../../Data/Circuit_3_PSpice_Data.csv}};  % give the real relative path + extension
+\addlegendentry{$y_4(t)$}
+
+\addplot+[black, dashed, mark=none]
+table[
+  col sep=comma,
+  trim cells=true,
+  header=true,
+  x=Time,
+  y expr=-1*\thisrow{V(M)}*0.6    
+]{\subfix{../../Data/Circuit_3_PSpice_Data.csv}};  % give the real relative path + extension
+\addlegendentry{$e_{m4}(t)$}
+
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,112 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{}}}
+
+\begin{document}
+\setbool{@fleqn}{false} %THIS DETERMINES IF EQUATIONS ARE CENTERED!
+%\chapter{Current Chapter Name} %If this is the first section in the document, it needs a chapter header, activate this to see how the spacing will be effected, but make sure to disable it before rendering format.tex
+
+\section{Envelope Detector Examples}
+
+%----------FIGURE EXAMPLES----------
+
+%Use this code for a figure displaying an image in the Images folder
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=0.5]{../Images/NAME}
+%\caption{FIGURE CAPTION}
+%\label{FIGURE NAME (not visible)}
+%\end{figure}
+
+%Use this code for a figure displaying a figure in the Figures folder
+
+%\begin{figure}[H]
+%\centering
+%\scalebox{1.0}{\subfile{../Figures/NAME}}
+%\caption{FIGURE CAPTION}
+%\label{FIGURE NAME (not visible)}
+%\end{figure}
+
+%----------START OF SECTION----------
+
+\noindent Note: All figures for this section are found in Figures/Envelope$\_$Detector
+
+\vspace{1\baselineskip}
+
+\noindent\textbf{Realistic Circuit:} Below is a simple ``Envelope Detector" circuit, Figure ``Envelope$\_$Circuit$\_1$". This circuit was simulated in PSpice, resulting in the plots below. These plots import from the tables in the ``Data" folder for Circuit 1.
+
+\begin{figure}[H]
+\centering
+\scalebox{1.0}{\subfile{../Figures/Envelope_Detector/Envelope_Circuit_1}}
+\caption{Ideal Envelope Detector Circuit}
+\label{Envelope_Circuit_1-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\scalebox{0.5}{\subfile{../Figures/Envelope_Detector/y2_Circuit_1}}
+\caption{Ideal Circuit: $y_1(t)$ vs $y_2(t)$ with $V_F=0$V}
+\label{y2_Circuit_1-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\scalebox{0.5}{\subfile{../Figures/Envelope_Detector/y2_Circuit_1_diff}}
+\caption{Ideal Circuit: Loss from Diode}
+\label{y2_Circuit_1_diff-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\scalebox{0.5}{\subfile{../Figures/Envelope_Detector/y2_Circuit_1_loss}}
+\caption{Ideal Circuit: $y_1(t)$ vs $y_2(t)$ with with $V_F=0.26$V}
+\label{y2_Circuit_1_loss-Workshop}
+\end{figure}
+
+\newpage
+\noindent\textbf{Realistic Circuit:} A more practical circuit is shown below in Figure \ref{Envelope_Circuit_2-Workshop}, and the same circuit with a `UA741 Op-Amp Adder Circuit' added to the left is shown in Figure \ref{Envelope_Circuit_3-Workshop}. The adder circuit creates and AM signal with message $m(t)$ and carrier $c(t)$, and the circuit shown in Figure \ref{Envelope_Circuit_2-Workshop} approximately recovers $m(t)$. Circuit 3 was simulated in PSpice, and similarly with Circuit 1, the resulting plots are shown below. These examples pull from the other data file, exported from PSpice.
+
+\begin{figure}[H]
+\centering
+\scalebox{1.0}{\subfile{../Figures/Envelope_Detector/Envelope_Circuit_2}}
+\caption{Practical Envelope Detector Circuit}
+\label{Envelope_Circuit_2-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\scalebox{1.0}{\subfile{../Figures/Envelope_Detector/Envelope_Circuit_3}}
+\caption{Complete Envelope Detector Circuit}
+\label{Envelope_Circuit_3-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\scalebox{0.5}{\subfile{../Figures/Envelope_Detector/y1_Circuit_3}}
+\caption{Envelope Detector: $y_0(t)$ vs $y_1(t)$}
+\label{y1_Circuit_3-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\scalebox{0.5}{\subfile{../Figures/Envelope_Detector/y2_Circuit_3}}
+\caption{Envelope Detector: $y_1(t)$ vs $y_2(t)$}
+\label{y2_Circuit_3-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\scalebox{0.5}{\subfile{../Figures/Envelope_Detector/y3_Circuit_3}}
+\caption{Envelope Detector: $y_2(t)$ vs $y_3(t)$}
+\label{y3_Circuit_3-Workshop}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\scalebox{0.5}{\subfile{../Figures/Envelope_Detector/y4_Circuit_3}}
+\caption{Envelope Detector: $y_3(t)$ vs $y_4(t)$}
+\label{y4_Circuit_4-Workshop}
+\end{figure}
+
+
+\end{document}
